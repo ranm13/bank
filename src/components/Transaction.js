@@ -1,14 +1,22 @@
 import React, {Component} from 'react'
+import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 
 class Transaction extends Component {
    
+    getIconByTransactionType = (amount) =>{
+        return Math.sign(amount) === 1 ?
+        <FaArrowUp style={{color: "green"}}/>: 
+        <FaArrowDown style={{color: "red"}}/>
+    }
+
     render() {
         let transaction = this.props.transaction
-        let isDeposit = Math.sign(transaction.amount) === 1 ? true: false
-        let style ={}
-        isDeposit? style.color = "green": style.color = "red"
         return (
-        <div style={style}>Amount: {transaction.amount}| Vendor: {transaction.vendor}| Category: {transaction.category}</div>)
+        <tr>
+            <td>{this.getIconByTransactionType(transaction.amount)} {transaction.amount}</td>
+            <td>{transaction.vendor}</td>
+            <td>{transaction.category}</td>
+        </tr>)
     }
 }
 export default Transaction

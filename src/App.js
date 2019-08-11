@@ -43,11 +43,11 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <img src={logo} alt="Bank Hashualim logo" id ="logo" width="200px"></img>
+          <img src={logo} alt="Bank Hashualim logo" id ="logo" width="150px"></img>
           <h1 id="headline">Bank Hashualim</h1>
         </header>
-        <div id="balance">Balance: {transactions? this.checkBalance(): null}</div>
-         <Operations pushTransaction={this.pushTransaction}/>
+        <div id="bar"><span className="bar-item">Balance: {transactions? this.checkBalance(): null}</span>  
+         <Operations pushTransaction={this.pushTransaction}/></div> 
         {transactions? <Transactions transactions={transactions} /> : null}
       </div>
     );

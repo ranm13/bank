@@ -1,4 +1,45 @@
+header{
+  height: 150px;
+  text-align: center;
+}
 #headline{
   display: inline-block;
   font-size: 4em;
+  position: relative;
+  bottom: 50px;
+}
+
+#bar{
+  background-image: linear-gradient(white,rgb(182, 177, 177));
+  border: 2px solid rgb(182, 177, 177);
+  border-radius: 10px;
+  margin: auto;
+  width: 75%;
+  font-size: 1.1em;
+}
+
+.bar-item{
+  margin: 10px;
+}
+
+#expenses-table{
+  margin: auto;
+  width: 75%;
+  text-align: center;
+  background-color: rgb(223, 219, 219);
+  border: 1px solid black;
+  margin-top: 5px;
+}
+
+td, th{
+  border:1px solid black;
+}
+
+button{
+  background-color: rgb(223, 14, 14);
+  border:1px solid rgb(223, 14, 14);
+  border-radius: 10px;
+  font-size: 1.2em;
+  color: white;
+  cursor: pointer;
 }
