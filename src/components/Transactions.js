@@ -5,7 +5,7 @@ class Transactions extends Component {
     render() {
         return (
         <div>
-            {this.props.transactions.map(t => <Transaction key={t.vendor} transaction={t} />)}
+            {this.props.transactions.map(t => <Transaction key={t._id} transaction={t} />)}
         </div>)
     }
 }

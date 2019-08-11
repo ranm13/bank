@@ -1,3 +1,4 @@
-.App {
-  text-align: center;
+#headline{
+  display: inline-block;
+  font-size: 4em;
 }
