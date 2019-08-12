@@ -15,7 +15,6 @@ class Transaction extends Component {
         <tr>
             <td>{this.getIconByTransactionType(transaction.amount)} {transaction.amount}</td>
             <td>{transaction.vendor}</td>
-            <td>{transaction.category}</td>
         </tr>)
     }
 }

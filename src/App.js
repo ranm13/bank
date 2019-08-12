@@ -9,46 +9,47 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      transactions: []  
+      transactions: [],
+      balance: 0
     }
   }
 
-  checkBalance = () => {
+  checkBalance = (data) => {
     let balance = 0
-    for(let i of this.state.transactions){
+    for(let i of data){
       balance += i.amount
     }
     return balance
   }
 
-  pushTransaction = async(transaction) => {
-    const response = await axios.post("http://localhost:1991/transaction", transaction, function(){})
-    this.setState({ transactions: response.data })
+  updateState = (data) => {
+    let balance = this.checkBalance(data)
+    this.setState({ transactions: data, balance})
   }
 
-  async getTransactions() {
-    return axios.get("http://localhost:1991/transactions", function(){})
+  pushTransaction = async(transaction) => {
+    const response = await axios.post("http://localhost:1991/transaction", transaction, function(){})
+    this.updateState(response.data)
   }
 
   async componentDidMount() {
-    const response = await this.getTransactions()
-    this.setState({ transactions: response.data })
+    const response = await axios.get("http://localhost:1991/transactions", function(){})
+    this.updateState(response.data)
   }
 
   render(){
-    let transactions = this.state.transactions||""
-    // let isDeposit = Math.sign(transaction.amount) === 1 ? true: false
-    // let style ={}
-    // isDeposit? style.color = "green": style.color = "red"
     return (
       <div className="App">
         <header>
           <img src={logo} alt="Bank Hashualim logo" id ="logo" width="150px"></img>
           <h1 id="headline">Bank Hashualim</h1>
         </header>
-        <div id="bar"><span className="bar-item">Balance: {transactions? this.checkBalance(): null}</span>  
-         <Operations pushTransaction={this.pushTransaction}/></div> 
-        {transactions? <Transactions transactions={transactions} /> : null}
+       <div id="balance">Balance: 
+        <span style={{color: this.state.balance > 1000 ? "green": "red"}}>{this.state.balance}
+        </span>
+       </div>
+         <Operations pushTransaction={this.pushTransaction} balance={this.state.balance}/> 
+        {this.state.transactions? <Transactions transactions={this.state.transactions} /> : null}
       </div>
     );
   }

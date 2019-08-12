@@ -23,23 +23,57 @@ header{
 }
 
 #expenses-table{
-  margin: auto;
-  width: 75%;
+  float: left;
   text-align: center;
   background-color: rgb(223, 219, 219);
   border: 1px solid black;
+  margin: 12%;
+  width: 40%;
   margin-top: 5px;
+  margin-right: 15px;
+}
+
+#categories{
+  float: left;
+  width: 35%;
+  margin-top: 5px;
+  text-align: center;
 }
 
 td, th{
   border:1px solid black;
 }
 
+.title{
+  border: none;
+  font-size: 2em;
+}
+
+#categories-title{
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+}
 button{
-  background-color: rgb(223, 14, 14);
-  border:1px solid rgb(223, 14, 14);
+  background-color: rgb(228, 30, 30);
+  border:1px solid rgb(228, 30, 30);
   border-radius: 10px;
   font-size: 1.2em;
   color: white;
   cursor: pointer;
 }
+
+#balance{
+  text-align: center;
+  font-size: 2em;
+  margin: 10px;
+   
+}
+
+#warning-messege{
+  text-align: center;
+  font-weight: bold;
+  color: rgb(231, 5, 5);
+  font-size: 2em;
+}
+
